@@ -4,448 +4,429 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Rahmat Wahyono - IT Infrastructure, Data Center and System Administration Portfolio">
 <title>Rahmat Wahyono | IT Infrastructure</title>
 
 <style>
 :root {
-  --bg: #050b17;
-  --bg2: #0a1930;
-  --card: #101f32;
-  --cyan: #22d3ee;
-  --blue: #168cff;
-  --white: #edf5ff;
-  --muted: #a9bbd0;
-  --border: rgba(34,211,238,.2);
+  --bg:#050b17;
+  --panel:#0c192b;
+  --card:#102239;
+  --cyan:#22d3ee;
+  --blue:#168cff;
+  --white:#edf5ff;
+  --muted:#a9bbd0;
+  --border:rgba(34,211,238,.2);
 }
 
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  scroll-behavior: smooth;
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
 }
 
 body {
-  background: var(--bg);
-  color: var(--white);
-  font-family: Arial, sans-serif;
-  line-height: 1.7;
-  overflow-x: hidden;
+  font-family:Arial,sans-serif;
+  background:var(--bg);
+  color:var(--white);
+  min-height:100vh;
+  overflow-x:hidden;
 }
 
-a {
-  text-decoration: none;
-}
-
-/* NAVIGATION */
+/* HEADER */
 
 header {
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-  padding: 17px 8%;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  background: rgba(5,11,23,.94);
-  backdrop-filter: blur(15px);
-  border-bottom: 1px solid var(--border);
+  height:76px;
+  position:sticky;
+  top:0;
+  z-index:1000;
+  padding:0 8%;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  background:rgba(5,11,23,.95);
+  backdrop-filter:blur(18px);
+  border-bottom:1px solid var(--border);
 }
 
 .logo {
-  color: var(--cyan);
-  font-size: 25px;
-  font-weight: 800;
-  letter-spacing: 1px;
+  color:var(--cyan);
+  font-size:26px;
+  font-weight:900;
+  letter-spacing:1px;
 }
 
 nav {
-  display: flex;
-  gap: 28px;
+  display:flex;
+  align-items:center;
+  gap:10px;
 }
 
-nav a {
-  color: var(--white);
-  font-size: 14px;
-  transition: .3s;
+nav button {
+  background:transparent;
+  border:none;
+  color:var(--white);
+  padding:12px 14px;
+  cursor:pointer;
+  font-size:14px;
+  border-radius:7px;
+  transition:.3s;
 }
 
-nav a:hover {
-  color: var(--cyan);
+nav button:hover,
+nav button.active {
+  color:var(--cyan);
+  background:rgba(34,211,238,.09);
 }
 
-/* HERO BACKGROUND */
+/* MAIN BACKGROUND */
 
-.hero {
-  min-height: 690px;
-  position: relative;
-  overflow: hidden;
-  isolation: isolate;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 55px;
-  padding: 90px 10%;
+main {
+  min-height:calc(100vh - 145px);
+  position:relative;
+  isolation:isolate;
+  overflow:hidden;
+}
 
+main::before {
+  content:"";
+  position:fixed;
+  inset:76px 0 0;
+  z-index:-1;
+  pointer-events:none;
   background:
-    radial-gradient(ellipse at 80% 45%,
-      rgba(0,183,255,.22), transparent 38%),
-    radial-gradient(ellipse at 15% 85%,
-      rgba(0,255,220,.12), transparent 35%),
-    radial-gradient(ellipse at 50% 0%,
-      rgba(30,80,160,.20), transparent 50%),
-    linear-gradient(120deg,
-      #050b17, #0a1930, #071525, #08111f);
+    radial-gradient(ellipse at 80% 30%,
+      rgba(0,150,255,.16),transparent 40%),
+    radial-gradient(ellipse at 10% 90%,
+      rgba(0,255,220,.08),transparent 40%),
+    linear-gradient(130deg,#050b17,#0a1930,#071525);
 }
 
-/* DIGITAL GRID */
-
-.hero::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  pointer-events: none;
-
+main::after {
+  content:"";
+  position:fixed;
+  inset:76px 0 0;
+  z-index:-1;
+  pointer-events:none;
   background-image:
-    linear-gradient(rgba(34,211,238,.07) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(34,211,238,.07) 1px, transparent 1px);
-
-  background-size: 45px 45px;
-  mask-image: linear-gradient(to right, transparent, black 35%, black);
+    linear-gradient(rgba(34,211,238,.035) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(34,211,238,.035) 1px,transparent 1px);
+  background-size:45px 45px;
 }
 
-/* GLOW EFFECT */
+/* PAGE SYSTEM */
 
-.hero::after {
-  content: "";
-  position: absolute;
-  width: 500px;
-  height: 500px;
-  right: 5%;
-  top: 10%;
-  z-index: 0;
-  pointer-events: none;
-
-  background: radial-gradient(
-    circle,
-    rgba(0,195,255,.18),
-    rgba(0,195,255,.04) 45%,
-    transparent 70%
-  );
-
-  filter: blur(25px);
-  animation: glowMove 8s ease-in-out infinite alternate;
+.page {
+  display:none;
+  min-height:calc(100vh - 145px);
+  padding:65px 10%;
+  animation:pageEnter .45s ease;
 }
 
-@keyframes glowMove {
-  from { transform: translate(0,0) scale(.9); }
-  to { transform: translate(-35px,30px) scale(1.15); }
+.page.active {
+  display:flex;
+  flex-direction:column;
 }
 
-.hero > * {
-  position: relative;
-  z-index: 2;
+@keyframes pageEnter {
+  from {
+    opacity:0;
+    transform:translateY(12px);
+  }
+  to {
+    opacity:1;
+    transform:translateY(0);
+  }
 }
 
-.hero-content {
-  flex: 1;
-  animation: fadeUp 1s ease;
-}
+/* TITLES */
 
 .tag {
-  color: var(--cyan);
-  font-size: 13px;
-  font-weight: bold;
-  letter-spacing: 4px;
-  margin-bottom: 22px;
+  color:var(--cyan);
+  font-size:12px;
+  letter-spacing:4px;
+  font-weight:bold;
+  margin-bottom:18px;
 }
 
-.hero h1 {
-  font-size: clamp(38px,5vw,66px);
-  line-height: 1.15;
-  margin-bottom: 20px;
+h1 {
+  font-size:clamp(38px,5vw,65px);
+  line-height:1.2;
+  margin-bottom:20px;
 }
 
-.hero h1 span,
-.section-title span {
-  color: var(--cyan);
+h1 span,
+h2 span {
+  color:var(--cyan);
 }
 
-.hero h2 {
-  font-size: clamp(20px,2.5vw,29px);
-  margin-bottom: 20px;
+h2 {
+  font-size:36px;
+  margin-bottom:25px;
 }
 
-.hero p {
-  color: var(--muted);
-  max-width: 650px;
-}
-
-.profile-frame {
-  flex: 0 0 310px;
-  width: 310px;
-  height: 400px;
-  padding: 6px;
-  border: 2px solid var(--cyan);
-  border-radius: 22px;
-  box-shadow:
-    0 0 20px rgba(34,211,238,.25),
-    0 0 65px rgba(34,211,238,.15);
-  overflow: hidden;
-  animation: float 5s ease-in-out infinite;
-}
-
-.profile-frame img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center top;
-  border-radius: 15px;
-  display: block;
-}
-
-@keyframes float {
-  0%,100% { transform: translateY(0); }
-  50% { transform: translateY(-12px); }
-}
-
-.btn {
-  display: inline-block;
-  margin-top: 28px;
-  padding: 13px 25px;
-  background: var(--cyan);
-  color: #06101d;
-  border-radius: 8px;
-  font-weight: bold;
-  transition: .3s;
-}
-
-.btn:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 0 25px rgba(34,211,238,.4);
-}
-
-.btn-outline {
-  margin-left: 10px;
-  background: transparent;
-  border: 1px solid var(--cyan);
-  color: var(--cyan);
-}
-
-/* GENERAL SECTIONS */
-
-section:not(.hero) {
-  padding: 95px 10%;
-  scroll-margin-top: 75px;
-}
-
-.section-title {
-  font-size: 36px;
-  margin-bottom: 25px;
+p {
+  color:var(--muted);
+  line-height:1.8;
 }
 
 .description {
-  color: var(--muted);
-  max-width: 750px;
+  max-width:750px;
 }
+
+/* HOME */
+
+#home {
+  justify-content:center;
+}
+
+.hero {
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:55px;
+  width:100%;
+}
+
+.hero-content {
+  flex:1;
+}
+
+.hero h3 {
+  font-size:27px;
+  margin-bottom:20px;
+}
+
+.profile-frame {
+  width:300px;
+  height:390px;
+  flex-shrink:0;
+  padding:6px;
+  border:2px solid var(--cyan);
+  border-radius:22px;
+  box-shadow:0 0 35px rgba(34,211,238,.25);
+  animation:float 5s ease-in-out infinite;
+  overflow:hidden;
+}
+
+.profile-frame img {
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:center top;
+  border-radius:15px;
+}
+
+@keyframes float {
+  0%,100% {transform:translateY(0)}
+  50% {transform:translateY(-12px)}
+}
+
+/* BUTTONS */
+
+.btn {
+  display:inline-block;
+  padding:13px 24px;
+  margin-top:25px;
+  background:var(--cyan);
+  color:#06101d;
+  border-radius:8px;
+  font-weight:bold;
+  text-decoration:none;
+  border:none;
+  cursor:pointer;
+  transition:.3s;
+}
+
+.btn:hover {
+  transform:translateY(-4px);
+  box-shadow:0 0 25px rgba(34,211,238,.35);
+}
+
+.btn-outline {
+  margin-left:10px;
+  background:transparent;
+  color:var(--cyan);
+  border:1px solid var(--cyan);
+}
+
+/* ABOUT */
 
 .about-box {
-  background: linear-gradient(135deg,#10243b,#0a1729);
-  border: 1px solid var(--border);
-  padding: 35px;
-  border-radius: 15px;
+  max-width:850px;
+  padding:35px;
+  background:rgba(16,34,57,.8);
+  border:1px solid var(--border);
+  border-radius:15px;
 }
 
-/* SKILLS AND PROJECTS */
+/* CARD GRID */
 
-.skills,
-.projects {
-  display: grid;
-  grid-template-columns: repeat(auto-fit,minmax(220px,1fr));
-  gap: 22px;
-  margin-top: 35px;
+.grid {
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:22px;
+  margin-top:30px;
 }
 
 .card {
-  background: linear-gradient(145deg,#12253c,#0a1628);
-  border: 1px solid var(--border);
-  border-radius: 14px;
-  padding: 27px;
-  transition: .35s;
+  padding:27px;
+  background:linear-gradient(145deg,#12253c,#0a1628);
+  border:1px solid var(--border);
+  border-radius:14px;
+  transition:.3s;
 }
 
 .card:hover {
-  transform: translateY(-8px);
-  border-color: var(--cyan);
-  box-shadow: 0 12px 35px rgba(0,150,255,.13);
+  transform:translateY(-7px);
+  border-color:var(--cyan);
+  box-shadow:0 12px 35px rgba(0,150,255,.13);
 }
 
 .icon {
-  font-size: 34px;
-  margin-bottom: 15px;
+  font-size:34px;
+  margin-bottom:15px;
 }
 
 .card h3 {
-  color: var(--cyan);
-  font-size: 19px;
-  margin-bottom: 12px;
+  color:var(--cyan);
+  font-size:19px;
+  margin-bottom:12px;
 }
 
 .card p {
-  color: var(--muted);
-  font-size: 14px;
-}
-
-.project-label {
-  display: inline-block;
-  color: var(--cyan);
-  font-size: 11px;
-  letter-spacing: 2px;
-  margin-bottom: 12px;
+  font-size:14px;
 }
 
 /* EXPERIENCE */
 
 .timeline {
-  border-left: 2px solid var(--cyan);
-  margin: 35px 0 0 10px;
-  padding-left: 30px;
+  border-left:2px solid var(--cyan);
+  margin:25px 0 0 10px;
+  padding-left:30px;
+  max-width:850px;
 }
 
 .timeline-item {
-  position: relative;
-  background: var(--card);
-  padding: 25px;
-  margin-bottom: 25px;
-  border: 1px solid var(--border);
-  border-radius: 12px;
+  position:relative;
+  padding:25px;
+  margin-bottom:25px;
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:12px;
 }
 
 .timeline-item::before {
-  content: "";
-  position: absolute;
-  left: -39px;
-  top: 30px;
-  width: 14px;
-  height: 14px;
-  background: var(--cyan);
-  border-radius: 50%;
-  box-shadow: 0 0 15px var(--cyan);
+  content:"";
+  position:absolute;
+  left:-39px;
+  top:30px;
+  width:14px;
+  height:14px;
+  background:var(--cyan);
+  border-radius:50%;
+  box-shadow:0 0 15px var(--cyan);
 }
 
 .timeline-item h3 {
-  color: var(--cyan);
-  margin-bottom: 8px;
+  color:var(--cyan);
+  margin-bottom:10px;
 }
 
 /* CONTACT */
 
-.contact {
-  text-align: center;
-  background:
-    radial-gradient(ellipse at center,
-      rgba(0,150,255,.13), transparent 65%),
-    #081525;
+.contact-box {
+  max-width:700px;
+  text-align:center;
+  margin:auto;
 }
 
-.contact .description {
-  margin: auto;
+.contact-box p {
+  margin-bottom:15px;
 }
 
 .contact-links {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 15px;
+  display:flex;
+  justify-content:center;
+  flex-wrap:wrap;
+  gap:12px;
 }
 
 footer {
-  padding: 25px;
-  text-align: center;
-  color: var(--muted);
-  border-top: 1px solid var(--border);
-  font-size: 13px;
-}
-
-/* SCROLL ANIMATION */
-
-.reveal {
-  opacity: 0;
-  transform: translateY(30px);
-  transition: .8s ease;
-}
-
-.reveal.active {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-@keyframes fadeUp {
-  from { opacity: 0; transform: translateY(25px); }
-  to { opacity: 1; transform: translateY(0); }
+  padding:22px;
+  text-align:center;
+  color:var(--muted);
+  font-size:13px;
+  border-top:1px solid var(--border);
 }
 
 /* MOBILE */
 
 @media(max-width:800px) {
   header {
-    padding: 15px 5%;
-    flex-direction: column;
-    gap: 12px;
+    height:auto;
+    min-height:76px;
+    padding:15px 5%;
+    flex-direction:column;
+    gap:12px;
   }
 
   nav {
-    gap: 14px;
-    flex-wrap: wrap;
-    justify-content: center;
+    width:100%;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:3px;
   }
 
-  nav a {
-    font-size: 12px;
+  nav button {
+    padding:9px 10px;
+    font-size:12px;
+  }
+
+  .page {
+    padding:55px 7%;
+    min-height:calc(100vh - 150px);
   }
 
   .hero {
-    flex-direction: column-reverse;
-    text-align: center;
-    padding: 65px 7%;
-    gap: 35px;
+    flex-direction:column-reverse;
+    text-align:center;
+    gap:35px;
   }
 
   .profile-frame {
-    flex: none;
-    width: 235px;
-    height: 300px;
-  }
-
-  .hero p {
-    margin: auto;
+    width:230px;
+    height:300px;
   }
 
   .hero h1 {
-    font-size: 40px;
+    font-size:39px;
   }
 
-  section:not(.hero) {
-    padding: 65px 7%;
+  .hero h3 {
+    font-size:21px;
+  }
+
+  .hero p {
+    font-size:14px;
+  }
+
+  h2 {
+    font-size:29px;
   }
 
   .btn-outline {
-    margin-left: 0;
+    margin-left:0;
+  }
+
+  .about-box {
+    padding:23px;
   }
 }
 
 @media(prefers-reduced-motion:reduce) {
   *,*::before,*::after {
-    scroll-behavior: auto !important;
-    animation: none !important;
-    transition: none !important;
-  }
-
-  .reveal {
-    opacity: 1;
-    transform: none;
+    animation:none!important;
+    transition:none!important;
   }
 }
 </style>
@@ -458,66 +439,78 @@ footer {
   <div class="logo">RAHMAT.W</div>
 
   <nav>
-    <a href="#home">Home</a>
-    <a href="#about">About</a>
-    <a href="#skills">Skills</a>
-    <a href="#experience">Experience</a>
-    <a href="#projects">Projects</a>
-    <a href="#contact">Contact</a>
+    <button class="active" data-page="home">Home</button>
+    <button data-page="about">About</button>
+    <button data-page="skills">Skills</button>
+    <button data-page="experience">Experience</button>
+    <button data-page="projects">Projects</button>
+    <button data-page="contact">Contact</button>
   </nav>
 </header>
 
-<!-- HOME -->
-<section class="hero" id="home">
+<main>
 
-  <div class="hero-content">
-    <div class="tag">WELCOME TO MY PORTFOLIO</div>
+<!-- HOME PAGE -->
+<section class="page active" id="home">
 
-    <h1>
-      Hi, I'm <span>Rahmat Wahyono.</span>
-    </h1>
+  <div class="hero">
 
-    <h2>IT Infrastructure & System Administration</h2>
+    <div class="hero-content">
+      <div class="tag">WELCOME TO MY PORTFOLIO</div>
 
-    <p>
-      Lulusan S1 Sistem Informasi dengan pengalaman
-      di lingkungan Data Center. Memiliki ketertarikan
-      pada Linux, Server Administration, Virtualization,
-      dan Network Infrastructure.
-    </p>
+      <h1>
+        Hi, I'm <span>Rahmat Wahyono.</span>
+      </h1>
 
-    <a href="#about" class="btn">Explore My Profile →</a>
-    <a href="#contact" class="btn btn-outline">Contact Me</a>
-  </div>
+      <h3>IT Infrastructure & System Administration</h3>
 
-  <div class="profile-frame">
-    <img
-      src="WhatsApp Image 2026-11-04 at 12.56.48.jpeg"
-      alt="Foto profil Rahmat Wahyono"
-    >
+      <p>
+        Lulusan S1 Sistem Informasi dengan pengalaman
+        di lingkungan Data Center. Memiliki ketertarikan
+        pada Linux, Server Administration, Virtualization,
+        dan Network Infrastructure.
+      </p>
+
+      <button class="btn" data-go="about">
+        Explore My Profile →
+      </button>
+
+      <button class="btn btn-outline" data-go="contact">
+        Contact Me
+      </button>
+    </div>
+
+    <div class="profile-frame">
+      <img src="WhatsApp Image 2026-11-04 at 12.56.48.jpeg"
+      alt="Rahmat Wahyono">
+    </div>
+
   </div>
 
 </section>
 
-<!-- ABOUT -->
-<section id="about" class="reveal">
+<!-- ABOUT PAGE -->
+<section class="page" id="about">
+
   <div class="tag">ABOUT ME</div>
-  <h2 class="section-title">Tentang <span>Saya</span></h2>
+  <h2>Tentang <span>Saya</span></h2>
 
   <div class="about-box">
-    <p class="description">
+    <p>
       Saya merupakan lulusan S1 Sistem Informasi dengan
-      pengalaman bekerja di lingkungan Data Center,
-      khususnya pada operasional infrastruktur teknologi
-      informasi.
-
+      kemampuan dalam pengolahan data, administrasi,
+      penyusunan dokumen, serta pelayanan.
       <br><br>
 
-      Saya memiliki ketertarikan dalam pengelolaan server,
+      Saya juga memiliki pengalaman bekerja di lingkungan
+      Data Center, khususnya dalam operasional infrastruktur
+      teknologi informasi.
+      <br><br>
+
+      Saya memiliki ketertarikan pada pengelolaan server,
       virtualisasi, jaringan komputer, Linux Administration,
       serta pengembangan kemampuan di bidang System
       Administration.
-
       <br><br>
 
       Saya terus meningkatkan kemampuan teknis melalui
@@ -525,31 +518,38 @@ footer {
       laboratorium.
     </p>
   </div>
+
 </section>
 
-<!-- SKILLS -->
-<section id="skills" class="reveal">
-  <div class="tag">TECHNICAL KNOWLEDGE</div>
-  <h2 class="section-title">Technical <span>Skills</span></h2>
+<!-- SKILLS PAGE -->
+<section class="page" id="skills">
 
-  <div class="skills">
+  <div class="tag">TECHNICAL KNOWLEDGE</div>
+  <h2>Technical <span>Skills</span></h2>
+
+  <p class="description">
+    Beberapa bidang teknologi informasi yang saya pelajari
+    dan kembangkan.
+  </p>
+
+  <div class="grid">
 
     <div class="card">
       <div class="icon">🐧</div>
       <h3>Linux Administration</h3>
-      <p>Ubuntu Server, Debian, SSH, Linux commands dan administrasi sistem.</p>
+      <p>Ubuntu Server, Debian, SSH dan administrasi sistem Linux.</p>
     </div>
 
     <div class="card">
       <div class="icon">🖥️</div>
       <h3>Virtualization</h3>
-      <p>Proxmox VE, Virtual Machine, VM management dan virtualisasi server.</p>
+      <p>Proxmox VE, Virtual Machine dan manajemen virtualisasi.</p>
     </div>
 
     <div class="card">
       <div class="icon">🌐</div>
       <h3>Networking</h3>
-      <p>IP Address, DNS, VLAN, Ethernet dan network troubleshooting.</p>
+      <p>IP Address, DNS, VLAN, Ethernet dan troubleshooting jaringan.</p>
     </div>
 
     <div class="card">
@@ -571,19 +571,21 @@ footer {
     </div>
 
   </div>
+
 </section>
 
-<!-- EXPERIENCE -->
-<section id="experience" class="reveal">
+<!-- EXPERIENCE PAGE -->
+<section class="page" id="experience">
+
   <div class="tag">PROFESSIONAL JOURNEY</div>
-  <h2 class="section-title">My <span>Experience</span></h2>
+  <h2>My <span>Experience</span></h2>
 
   <div class="timeline">
 
     <div class="timeline-item">
       <h3>Data Center Operations</h3>
-      <p class="description">
-        Pengalaman dalam lingkungan operasional Data Center,
+      <p>
+        Pengalaman di lingkungan operasional Data Center,
         pemeriksaan kondisi server, pemantauan infrastruktur
         dan penanganan kendala teknis.
       </p>
@@ -591,7 +593,7 @@ footer {
 
     <div class="timeline-item">
       <h3>System Administration Practice</h3>
-      <p class="description">
+      <p>
         Praktik administrasi Linux, pengelolaan layanan server,
         virtualisasi Proxmox dan troubleshooting sistem.
       </p>
@@ -599,86 +601,200 @@ footer {
 
     <div class="timeline-item">
       <h3>IT Infrastructure Learning</h3>
-      <p class="description">
+      <p>
         Pengembangan kemampuan jaringan komputer,
         storage, server hardware dan web infrastructure.
       </p>
     </div>
 
   </div>
+
 </section>
 
-<!-- PROJECTS -->
-<section id="projects" class="reveal">
+<!-- PROJECTS PAGE -->
+<section class="page" id="projects">
+
   <div class="tag">MY WORK & PRACTICE</div>
-  <h2 class="section-title">Projects & <span>Portfolio</span></h2>
-
-  <div class="projects">
-
-    <div class="card">
-      <span class="project-label">VIRTUALIZATION</span>
-      <h3>Proxmox Virtualization Lab</h3>
-      <p>Praktik pembuatan dan pengelolaan Virtual Machine menggunakan Proxmox VE.</p>
-    </div>
-
-    <div class="card">
-      <span class="project-label">SYSTEM ADMINISTRATION</span>
-      <h3>Linux Server Administration</h3>
-      <p>Praktik administrasi Ubuntu Server, Debian, SSH dan konfigurasi layanan server.</p>
-    </div>
-
-    <div class="card">
-      <span class="project-label">WEB INFRASTRUCTURE</span>
-      <h3>Web Server Deployment</h3>
-      <p>Praktik instalasi Nginx, hosting website dan konfigurasi layanan web.</p>
-    </div>
-
-    <div class="card">
-      <span class="project-label">DATA CENTER</span>
-      <h3>Data Center Operations</h3>
-      <p>Pengalaman operasional infrastruktur Data Center dan pemeriksaan kondisi server.</p>
-    </div>
-
-  </div>
-</section>
-
-<!-- CONTACT -->
-<section class="contact reveal" id="contact">
-  <div class="tag">GET IN TOUCH</div>
-
-  <h2 class="section-title">
-    Mari <span>Terhubung</span>
-  </h2>
+  <h2>Projects & <span>Portfolio</span></h2>
 
   <p class="description">
-    Terbuka untuk kesempatan kerja, kolaborasi,
-    dan pengembangan karier di bidang IT Infrastructure
-    dan System Administration.
+    Dokumentasi beberapa praktik dan pembelajaran
+    di bidang IT Infrastructure.
   </p>
 
-  <div class="contact-links">
-    <a href="mailto:EMAIL-KAMU" class="btn">✉ Email Me</a>
-    <a href="https://www.linkedin.com/" target="_blank" rel="noopener noreferrer" class="btn btn-outline">LinkedIn</a>
+  <div class="grid">
+
+    <div class="card">
+      <div class="icon">🖥️</div>
+      <h3>Proxmox Virtualization Lab</h3>
+      <p>
+        Praktik pembuatan dan pengelolaan Virtual Machine
+        menggunakan Proxmox VE.
+      </p>
+    </div>
+
+    <div class="card">
+      <div class="icon">🐧</div>
+      <h3>Linux Server Administration</h3>
+      <p>
+        Praktik administrasi Ubuntu Server, Debian,
+        SSH dan konfigurasi layanan server.
+      </p>
+    </div>
+
+    <div class="card">
+      <div class="icon">🌐</div>
+      <h3>Web Server Deployment</h3>
+      <p>
+        Praktik instalasi Nginx, hosting website
+        dan konfigurasi layanan web.
+      </p>
+    </div>
+
+    <div class="card">
+      <div class="icon">🗄️</div>
+      <h3>Data Center Operations</h3>
+      <p>
+        Pengalaman operasional infrastruktur Data Center
+        dan pemeriksaan kondisi server.
+      </p>
+    </div>
+
   </div>
+
 </section>
+
+<!-- CONTACT PAGE -->
+<section class="page" id="contact">
+
+  <div class="contact-box">
+
+    <div class="tag">GET IN TOUCH</div>
+
+    <h2>Mari <span>Terhubung</span></h2>
+
+    <p>
+      Terbuka untuk kesempatan kerja, kolaborasi,
+      dan pengembangan karier di bidang IT Infrastructure
+      dan System Administration.
+    </p>
+
+    <div class="contact-links">
+
+      <a href="mailto:EMAIL-KAMU" class="btn">
+        ✉ Email Me
+      </a>
+
+      <a href="https://www.linkedin.com/"
+      target="_blank" rel="noopener noreferrer"
+      class="btn btn-outline">
+        LinkedIn
+      </a>
+
+    </div>
+
+  </div>
+
+</section>
+
+</main>
 
 <footer>
   © 2026 Rahmat Wahyono | IT Infrastructure Portfolio
 </footer>
 
 <script>
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add("active");
-      observer.unobserve(entry.target);
-    }
-  });
-}, { threshold: 0.12 });
 
-document.querySelectorAll(".reveal").forEach(element => {
-  observer.observe(element);
+// NAVIGATION SYSTEM
+
+const pages = document.querySelectorAll(".page");
+const navButtons = document.querySelectorAll("nav button");
+
+function showPage(pageId) {
+
+  const target = document.getElementById(pageId);
+
+  if (!target) return;
+
+  pages.forEach(page => {
+    page.classList.remove("active");
+  });
+
+  target.classList.add("active");
+
+  navButtons.forEach(button => {
+    button.classList.toggle(
+      "active",
+      button.dataset.page === pageId
+    );
+  });
+
+  // Update URL without reloading
+  history.pushState(
+    {page: pageId},
+    "",
+    "#" + pageId
+  );
+
+  // Return to top when changing page
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth"
+  });
+}
+
+// Navigation menu clicks
+
+navButtons.forEach(button => {
+  button.addEventListener("click", () => {
+    showPage(button.dataset.page);
+  });
 });
+
+// Buttons inside content
+
+document.querySelectorAll("[data-go]").forEach(button => {
+  button.addEventListener("click", () => {
+    showPage(button.dataset.go);
+  });
+});
+
+// Browser back and forward
+
+window.addEventListener("popstate", () => {
+  const pageId = location.hash.replace("#", "") || "home";
+
+  const target = document.getElementById(pageId);
+
+  if (target) {
+    pages.forEach(page => page.classList.remove("active"));
+    target.classList.add("active");
+
+    navButtons.forEach(button => {
+      button.classList.toggle(
+        "active",
+        button.dataset.page === pageId
+      );
+    });
+  }
+});
+
+// Open page based on URL hash
+
+const initialPage = location.hash.replace("#", "") || "home";
+
+if (document.getElementById(initialPage)) {
+  pages.forEach(page => page.classList.remove("active"));
+  document.getElementById(initialPage).classList.add("active");
+
+  navButtons.forEach(button => {
+    button.classList.toggle(
+      "active",
+      button.dataset.page === initialPage
+    );
+  });
+}
+
 </script>
 
 </body>

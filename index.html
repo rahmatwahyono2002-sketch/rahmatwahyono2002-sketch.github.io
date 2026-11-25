@@ -4,7 +4,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <meta name="description" content="Rahmat Wahyono - IT Infrastructure and System Administration Portfolio">
+
 <title>Rahmat Wahyono | IT Infrastructure Portfolio</title>
 
 <style>
@@ -32,8 +34,8 @@ body {
 }
 
 a {
-    text-decoration: none;
     color: inherit;
+    text-decoration: none;
 }
 
 .container {
@@ -42,18 +44,20 @@ a {
     margin: auto;
 }
 
+/* NAVBAR */
+
 header {
     position: fixed;
     top: 0;
     width: 100%;
     z-index: 1000;
-    background: rgba(5,13,27,.95);
+    background: rgba(5,13,27,.96);
     backdrop-filter: blur(15px);
     border-bottom: 1px solid var(--border);
 }
 
 .navbar {
-    min-height: 75px;
+    min-height: 78px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -61,7 +65,7 @@ header {
 
 .logo {
     color: var(--cyan);
-    font-size: 27px;
+    font-size: 28px;
     font-weight: 900;
     letter-spacing: 1px;
 }
@@ -73,7 +77,7 @@ header {
 
 .nav-links a {
     font-size: 14px;
-    font-weight: 600;
+    font-weight: bold;
     transition: .3s;
 }
 
@@ -86,33 +90,15 @@ header {
     background: none;
     color: var(--cyan);
     border: none;
-    font-size: 27px;
+    font-size: 28px;
     cursor: pointer;
 }
 
+/* GENERAL SECTION */
+
 section {
     padding: 110px 0;
-    scroll-margin-top: 70px;
-}
-
-.hero {
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    padding-top: 120px;
-    background:
-        radial-gradient(circle at 80% 35%, rgba(0,150,220,.19), transparent 35%),
-        linear-gradient(rgba(32,213,237,.035) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(32,213,237,.035) 1px, transparent 1px),
-        var(--bg);
-    background-size: auto, 40px 40px, 40px 40px, auto;
-}
-
-.hero-content {
-    display: grid;
-    grid-template-columns: 1.5fr .8fr;
-    align-items: center;
-    gap: 65px;
+    scroll-margin-top: 75px;
 }
 
 .tag {
@@ -123,19 +109,82 @@ section {
     margin-bottom: 20px;
 }
 
-.hero h1 {
-    font-size: clamp(38px, 5vw, 68px);
-    line-height: 1.15;
-    margin-bottom: 25px;
+.section-title {
+    font-size: 38px;
+    margin-bottom: 20px;
 }
 
-.hero h1 span,
 .section-title span {
     color: var(--cyan);
 }
 
+.section-description {
+    color: var(--muted);
+    margin-bottom: 35px;
+}
+
+.card {
+    background: linear-gradient(145deg,#10243a,#081526);
+    border: 1px solid var(--border);
+    padding: 30px;
+    border-radius: 18px;
+    transition: .3s;
+}
+
+.card:hover {
+    border-color: var(--cyan);
+    transform: translateY(-5px);
+}
+
+.card h3 {
+    color: var(--cyan);
+    margin-bottom: 12px;
+    font-size: 21px;
+}
+
+.card p {
+    color: var(--muted);
+}
+
+/* HOME */
+
+.hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding-top: 130px;
+
+    background:
+        radial-gradient(circle at 80% 35%,
+        rgba(0,150,220,.20),transparent 35%),
+        linear-gradient(rgba(32,213,237,.035) 1px,
+        transparent 1px),
+        linear-gradient(90deg,rgba(32,213,237,.035) 1px,
+        transparent 1px),
+        var(--bg);
+
+    background-size: auto,40px 40px,40px 40px,auto;
+}
+
+.hero-content {
+    display: grid;
+    grid-template-columns: 1.5fr .8fr;
+    align-items: center;
+    gap: 65px;
+}
+
+.hero h1 {
+    font-size: clamp(38px,5vw,68px);
+    line-height: 1.15;
+    margin-bottom: 25px;
+}
+
+.hero h1 span {
+    color: var(--cyan);
+}
+
 .hero h2 {
-    font-size: 28px;
+    font-size: 27px;
     margin-bottom: 25px;
 }
 
@@ -173,6 +222,7 @@ section {
 }
 
 .profile-image {
+    display: block;
     width: 100%;
     max-width: 350px;
     height: 440px;
@@ -184,43 +234,12 @@ section {
     box-shadow: 0 0 35px rgba(32,213,237,.2);
 }
 
-.section-title {
-    font-size: 38px;
-    margin-bottom: 20px;
-}
-
-.section-description {
-    color: var(--muted);
-    margin-bottom: 35px;
-}
+/* ABOUT */
 
 .about-content {
     display: grid;
     grid-template-columns: 1.2fr 1fr;
     gap: 35px;
-}
-
-.card {
-    background: linear-gradient(145deg,#10243a,#081526);
-    border: 1px solid var(--border);
-    padding: 30px;
-    border-radius: 18px;
-    transition: .3s;
-}
-
-.card:hover {
-    border-color: var(--cyan);
-    transform: translateY(-5px);
-}
-
-.card h3 {
-    color: var(--cyan);
-    margin-bottom: 12px;
-    font-size: 21px;
-}
-
-.card p {
-    color: var(--muted);
 }
 
 .info-list {
@@ -232,8 +251,9 @@ section {
     color: var(--muted);
 }
 
-.skills-grid,
-.projects-grid {
+/* SKILLS */
+
+.skills-grid {
     display: grid;
     grid-template-columns: repeat(4,1fr);
     gap: 22px;
@@ -248,6 +268,8 @@ section {
     margin-bottom: 12px;
 }
 
+/* EXPERIENCE */
+
 .experience-card {
     border-left: 3px solid var(--cyan);
     margin-top: 25px;
@@ -260,14 +282,20 @@ section {
     margin-bottom: 10px;
 }
 
+/* PROJECTS */
+
 .projects-grid {
+    display: grid;
     grid-template-columns: repeat(2,1fr);
+    gap: 22px;
 }
 
 .project-icon {
     font-size: 35px;
     margin-bottom: 15px;
 }
+
+/* GALLERY */
 
 .gallery-grid {
     display: grid;
@@ -282,17 +310,19 @@ section {
     border: 1px solid var(--border);
     border-radius: 20px;
     transition: .3s;
+    cursor: pointer;
 }
 
 .gallery-card:hover {
     border-color: var(--cyan);
-    transform: translateY(-5px);
+    transform: translateY(-6px);
+    box-shadow: 0 10px 35px rgba(32,213,237,.12);
 }
 
 .gallery-card img {
     display: block;
     width: 100%;
-    height: 480px;
+    height: 430px;
     object-fit: contain;
     object-position: center;
     background: #050d1b;
@@ -313,6 +343,100 @@ section {
     color: var(--muted);
 }
 
+.gallery-hint {
+    color: var(--cyan);
+    font-size: 12px;
+    margin-top: 12px;
+    letter-spacing: 1px;
+}
+
+/* POPUP LIGHTBOX */
+
+.gallery-modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    background: rgba(0,5,15,.95);
+    backdrop-filter: blur(12px);
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.gallery-modal.active {
+    display: flex;
+}
+
+.modal-content {
+    position: relative;
+    width: 100%;
+    max-width: 1000px;
+    max-height: 92vh;
+    overflow-y: auto;
+    background: #0c1b2d;
+    border: 1px solid var(--cyan);
+    border-radius: 18px;
+    padding: 15px;
+    box-shadow: 0 0 40px rgba(32,213,237,.15);
+    animation: popup .3s ease;
+}
+
+.modal-content img {
+    display: block;
+    width: 100%;
+    max-height: 72vh;
+    object-fit: contain;
+    background: #050d1b;
+    border-radius: 12px;
+}
+
+.modal-info {
+    padding: 20px 10px 10px;
+}
+
+.modal-info h3 {
+    color: var(--cyan);
+    font-size: 24px;
+    margin-bottom: 8px;
+}
+
+.modal-info p {
+    color: var(--muted);
+}
+
+.modal-close {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    width: 42px;
+    height: 42px;
+    border: none;
+    border-radius: 50%;
+    background: var(--cyan);
+    color: #05101d;
+    font-size: 26px;
+    cursor: pointer;
+    z-index: 2;
+}
+
+.modal-close:hover {
+    background: white;
+}
+
+@keyframes popup {
+    from {
+        opacity: 0;
+        transform: scale(.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* CONTACT */
+
 .contact-card {
     max-width: 700px;
     margin: auto;
@@ -322,6 +446,8 @@ section {
 .contact-card h3 {
     font-size: 27px;
 }
+
+/* FOOTER */
 
 footer {
     padding: 30px;
@@ -334,27 +460,21 @@ footer span {
     color: var(--cyan);
 }
 
+/* RESPONSIVE */
+
 @media(max-width:900px) {
     .hero-content,
     .about-content {
         grid-template-columns: 1fr;
     }
 
-    .hero-text {
-        order: 2;
-    }
-
-    .hero-image {
-        order: 1;
+    .skills-grid {
+        grid-template-columns: repeat(2,1fr);
     }
 
     .profile-image {
         max-width: 280px;
         height: 350px;
-    }
-
-    .skills-grid {
-        grid-template-columns: repeat(2,1fr);
     }
 
     .projects-grid {
@@ -374,7 +494,7 @@ footer span {
     .nav-links {
         display: none;
         position: absolute;
-        top: 75px;
+        top: 78px;
         left: 0;
         width: 100%;
         padding: 25px;
@@ -400,7 +520,15 @@ footer span {
     }
 
     .gallery-card img {
-        height: 380px;
+        height: 350px;
+    }
+
+    .gallery-modal {
+        padding: 10px;
+    }
+
+    .modal-content img {
+        max-height: 65vh;
     }
 
     section {
@@ -412,11 +540,18 @@ footer span {
 
 <body>
 
+<!-- NAVIGATION -->
+
 <header>
     <div class="container navbar">
+
         <a href="#home" class="logo">RAHMAT.W</a>
 
-        <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+        <button class="menu-toggle"
+                onclick="toggleMenu()"
+                aria-label="Buka menu">
+            ☰
+        </button>
 
         <nav class="nav-links" id="navLinks">
             <a href="#home">Home</a>
@@ -426,17 +561,22 @@ footer span {
             <a href="#projects">Projects</a>
             <a href="#contact">Contact</a>
         </nav>
+
     </div>
 </header>
 
 <!-- HOME -->
+
 <section class="hero" id="home">
     <div class="container hero-content">
 
         <div class="hero-text">
+
             <div class="tag">WELCOME TO MY PORTFOLIO</div>
 
-            <h1>Hi, I'm <span>Rahmat Wahyono.</span></h1>
+            <h1>
+                Hi, I'm <span>Rahmat Wahyono.</span>
+            </h1>
 
             <h2>IT Infrastructure & System Administration</h2>
 
@@ -448,32 +588,46 @@ footer span {
             </p>
 
             <div class="buttons">
-                <a href="#about" class="btn primary">Explore My Profile →</a>
-                <a href="#contact" class="btn">Contact Me</a>
+                <a href="#about" class="btn primary">
+                    Explore My Profile →
+                </a>
+
+                <a href="#contact" class="btn">
+                    Contact Me
+                </a>
             </div>
+
         </div>
 
         <div class="hero-image">
+
             <img
                 class="profile-image"
                 src="WhatsApp%20Image%202026-11-04%20at%2012.56.48.jpeg"
                 alt="Foto Rahmat Wahyono"
             >
+
         </div>
 
     </div>
 </section>
 
 <!-- ABOUT -->
+
 <section id="about">
     <div class="container">
+
         <div class="tag">ABOUT ME</div>
-        <h2 class="section-title">Tentang <span>Saya</span></h2>
+
+        <h2 class="section-title">
+            Tentang <span>Saya</span>
+        </h2>
 
         <div class="about-content">
 
             <div class="card">
                 <h3>Profil Singkat</h3>
+
                 <p>
                     Saya merupakan lulusan S1 Sistem Informasi
                     yang memiliki ketertarikan pada teknologi
@@ -489,6 +643,7 @@ footer span {
 
             <div class="card">
                 <h3>Informasi</h3>
+
                 <ul class="info-list">
                     <li>🎓 Pendidikan: S1 Sistem Informasi</li>
                     <li>💻 Bidang: IT Infrastructure</li>
@@ -504,10 +659,16 @@ footer span {
 </section>
 
 <!-- SKILLS -->
+
 <section id="skills">
     <div class="container">
+
         <div class="tag">TECHNICAL ABILITIES</div>
-        <h2 class="section-title">Technical <span>Skills</span></h2>
+
+        <h2 class="section-title">
+            Technical <span>Skills</span>
+        </h2>
+
         <p class="section-description">
             Teknologi dan bidang yang saya pelajari dan praktikkan.
         </p>
@@ -567,39 +728,58 @@ footer span {
 </section>
 
 <!-- EXPERIENCE -->
+
 <section id="experience">
     <div class="container">
+
         <div class="tag">PROFESSIONAL JOURNEY</div>
-        <h2 class="section-title">Experience <span>& Learning</span></h2>
+
+        <h2 class="section-title">
+            Experience <span>& Learning</span>
+        </h2>
 
         <div class="card experience-card">
+
             <div class="date">DATA CENTER OPERATIONS</div>
+
             <h3>Data Center / IT Infrastructure</h3>
+
             <p>
                 Pengalaman dalam lingkungan operasional Data Center,
                 termasuk pemeriksaan kondisi server, monitoring
                 perangkat, pengecekan storage, konektivitas jaringan,
                 serta pemahaman infrastruktur server.
             </p>
+
         </div>
 
         <div class="card experience-card">
+
             <div class="date">SELF DEVELOPMENT & PRACTICE</div>
+
             <h3>IT Infrastructure Laboratory</h3>
+
             <p>
                 Praktik mandiri menggunakan Proxmox VE,
                 Ubuntu Server, Linux Administration,
                 Web Server Deployment dan Virtualization.
             </p>
+
         </div>
+
     </div>
 </section>
 
 <!-- PROJECTS -->
+
 <section id="projects">
     <div class="container">
+
         <div class="tag">MY WORK & PRACTICE</div>
-        <h2 class="section-title">Projects & <span>Portfolio</span></h2>
+
+        <h2 class="section-title">
+            Projects & <span>Portfolio</span>
+        </h2>
 
         <p class="section-description">
             Dokumentasi beberapa praktik dan pembelajaran
@@ -646,48 +826,76 @@ footer span {
 
         </div>
 
-        <!-- PHOTO DOCUMENTATION -->
+        <!-- DOCUMENTATION GALLERY -->
+
         <div style="margin-top:75px;">
+
             <div class="tag">FIELD DOCUMENTATION</div>
-            <h2 class="section-title">Data Center <span>Activities</span></h2>
+
+            <h2 class="section-title">
+                Data Center <span>Activities</span>
+            </h2>
 
             <p class="section-description">
                 Dokumentasi aktivitas pemeriksaan dan pemeliharaan
                 perangkat infrastruktur server.
+                Klik foto untuk melihat dokumentasi lebih detail.
             </p>
 
             <div class="gallery-grid">
 
-                <div class="gallery-card">
+                <!-- FOTO PERTAMA -->
+
+                <div class="gallery-card"
+                     onclick="openGallery(this)">
+
                     <img
                         src="foto%20yoyon%201.jpeg"
-                        alt="Aktivitas monitoring server di Data Center"
+                        alt="Server Monitoring dan Inspection"
                         loading="lazy"
                     >
 
                     <div class="gallery-info">
+
                         <h3>Server Monitoring & Inspection</h3>
+
                         <p>
                             Dokumentasi aktivitas pengecekan server,
                             konektivitas jaringan, dan kondisi
                             infrastruktur Data Center.
                         </p>
+
+                        <div class="gallery-hint">
+                            ↗ CLICK TO VIEW DETAIL
+                        </div>
+
                     </div>
                 </div>
 
-                <div class="gallery-card">
+                <!-- FOTO KEDUA -->
+
+                <div class="gallery-card"
+                     onclick="openGallery(this)">
+
                     <img
                         src="foto%20yoyon%202.jpeg"
-                        alt="Pemeriksaan hardware server"
+                        alt="Server Hardware Inspection"
                         loading="lazy"
                     >
 
                     <div class="gallery-info">
+
                         <h3>Server Hardware Inspection</h3>
+
                         <p>
                             Dokumentasi pemeriksaan komponen
                             hardware dan perangkat server.
                         </p>
+
+                        <div class="gallery-hint">
+                            ↗ CLICK TO VIEW DETAIL
+                        </div>
+
                     </div>
                 </div>
 
@@ -698,12 +906,19 @@ footer span {
 </section>
 
 <!-- CONTACT -->
+
 <section id="contact">
     <div class="container">
-        <div class="tag" style="text-align:center;">GET IN TOUCH</div>
+
+        <div class="tag" style="text-align:center;">
+            GET IN TOUCH
+        </div>
 
         <div class="card contact-card">
-            <h3>Mari <span style="color:var(--cyan)">Terhubung</span></h3>
+
+            <h3>
+                Mari <span style="color:var(--cyan)">Terhubung</span>
+            </h3>
 
             <p class="section-description" style="margin-top:15px;">
                 Terbuka untuk kesempatan kerja, kolaborasi,
@@ -713,24 +928,118 @@ footer span {
             <a href="mailto:EMAIL-KAMU" class="btn primary">
                 Contact Me →
             </a>
+
         </div>
     </div>
 </section>
 
+<!-- POPUP GALLERY -->
+
+<div class="gallery-modal"
+     id="galleryModal"
+     onclick="closeGallery(event)">
+
+    <div class="modal-content">
+
+        <button class="modal-close"
+                onclick="closeGallery(event)"
+                aria-label="Tutup foto">
+            ×
+        </button>
+
+        <img
+            id="modalImage"
+            src=""
+            alt="Dokumentasi Data Center"
+        >
+
+        <div class="modal-info">
+
+            <h3 id="modalTitle"></h3>
+
+            <p id="modalDescription"></p>
+
+        </div>
+    </div>
+</div>
+
+<!-- FOOTER -->
+
 <footer>
-    © 2026 <span>Rahmat Wahyono</span> | IT Infrastructure Portfolio
+    © 2026 <span>Rahmat Wahyono</span> |
+    IT Infrastructure Portfolio
 </footer>
 
+<!-- JAVASCRIPT -->
+
 <script>
+
+// MOBILE NAVIGATION
+
 function toggleMenu() {
-    document.getElementById("navLinks").classList.toggle("active");
+    document.getElementById("navLinks")
+        .classList.toggle("active");
 }
 
 document.querySelectorAll(".nav-links a").forEach(link => {
     link.addEventListener("click", () => {
-        document.getElementById("navLinks").classList.remove("active");
+        document.getElementById("navLinks")
+            .classList.remove("active");
     });
 });
+
+// OPEN GALLERY POPUP
+
+function openGallery(card) {
+
+    const image = card.querySelector("img");
+    const title = card.querySelector("h3");
+    const description = card.querySelector("p");
+
+    document.getElementById("modalImage").src = image.src;
+
+    document.getElementById("modalTitle").textContent =
+        title.textContent;
+
+    document.getElementById("modalDescription").textContent =
+        description.textContent;
+
+    document.getElementById("galleryModal")
+        .classList.add("active");
+
+    document.body.style.overflow = "hidden";
+}
+
+// CLOSE GALLERY POPUP
+
+function closeGallery(event) {
+
+    if (
+        event.target.id === "galleryModal" ||
+        event.target.classList.contains("modal-close")
+    ) {
+
+        document.getElementById("galleryModal")
+            .classList.remove("active");
+
+        document.body.style.overflow = "";
+    }
+}
+
+// CLOSE WITH ESCAPE KEY
+
+document.addEventListener("keydown", function(event) {
+
+    if (event.key === "Escape") {
+
+        document.getElementById("galleryModal")
+            .classList.remove("active");
+
+        document.body.style.overflow = "";
+    }
+
+});
+
 </script>
 
 </body>

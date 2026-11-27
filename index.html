@@ -4,6 +4,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>RAHMAT.W | IT Infrastructure Engineer</title>
 
 <style>
@@ -23,20 +24,28 @@
   box-sizing: border-box;
 }
 
-body {
+html, body {
+  min-height: 100%;
   font-family: 'Inter', sans-serif;
   background: var(--bg);
   color: var(--text);
+}
+
+body {
+  display: flex;
+  flex-direction: column;
   min-height: 100vh;
 }
 
+/* HEADER */
+
 header {
-  height: 94px;
+  min-height: 94px;
   padding: 0 9%;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background: rgba(5,14,28,.97);
+  background: #050e1c;
   border-bottom: 1px solid #183047;
   position: sticky;
   top: 0;
@@ -73,15 +82,19 @@ nav button.active {
   border-bottom-color: var(--cyan);
 }
 
+/* MAIN */
+
 main {
+  width: 100%;
   max-width: 1500px;
   margin: auto;
   padding: 0 9%;
+  flex: 1;
 }
 
 .page {
   display: none;
-  min-height: calc(100vh - 94px);
+  min-height: 650px;
   padding: 65px 0;
   animation: appear .35s ease;
 }
@@ -91,19 +104,29 @@ main {
 }
 
 @keyframes appear {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
+
+/* HOME */
 
 .hero {
   display: grid;
-  grid-template-columns: 1.4fr .8fr;
+  grid-template-columns: 1.5fr .8fr;
   align-items: center;
   gap: 55px;
-  min-height: 430px;
+  min-height: 530px;
+
   background-image:
     linear-gradient(rgba(22,205,228,.035) 1px,transparent 1px),
     linear-gradient(90deg,rgba(22,205,228,.035) 1px,transparent 1px);
+
   background-size: 47px 47px;
 }
 
@@ -112,13 +135,13 @@ main {
   font-size: 13px;
   font-weight: 800;
   letter-spacing: 5px;
-  margin-bottom: 24px;
+  margin-bottom: 25px;
 }
 
 .hero h1 {
-  font-size: clamp(35px, 5vw, 57px);
+  font-size: clamp(35px,5vw,65px);
   line-height: 1.15;
-  margin-bottom: 18px;
+  margin-bottom: 22px;
 }
 
 .hero h1 span,
@@ -127,7 +150,7 @@ h2 span {
 }
 
 .hero h3 {
-  font-size: 25px;
+  font-size: 27px;
   margin-bottom: 25px;
 }
 
@@ -135,18 +158,29 @@ h2 span {
   color: var(--muted);
   font-size: 18px;
   line-height: 1.9;
-  max-width: 750px;
+}
+
+.profile-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .profile {
   width: 100%;
-  max-width: 420px;
-  height: 380px;
+  max-width: 390px;
+  height: 420px;
   object-fit: cover;
   object-position: center 25%;
   border: 2px solid var(--cyan);
   border-radius: 25px;
-  box-shadow: 0 0 35px rgba(22,205,228,.18);
+  box-shadow: 0 0 35px rgba(22,205,228,.2);
+  transition: .4s;
+}
+
+.profile:hover {
+  transform: scale(1.025);
+  box-shadow: 0 0 45px rgba(22,205,228,.35);
 }
 
 .buttons {
@@ -157,6 +191,7 @@ h2 span {
 }
 
 .btn {
+  display: inline-block;
   padding: 18px 29px;
   background: var(--cyan);
   color: #031321;
@@ -165,6 +200,7 @@ h2 span {
   font-size: 16px;
   font-weight: 800;
   cursor: pointer;
+  text-decoration: none;
   transition: .3s;
 }
 
@@ -177,6 +213,8 @@ h2 span {
   background: transparent;
   color: var(--cyan);
 }
+
+/* SECTION */
 
 .section-title {
   font-size: 43px;
@@ -208,7 +246,8 @@ h2 span {
   margin-bottom: 17px;
 }
 
-.card p, .card li {
+.card p,
+.card li {
   color: var(--muted);
   line-height: 1.9;
 }
@@ -217,6 +256,8 @@ h2 span {
   padding-left: 20px;
 }
 
+/* SKILLS */
+
 .skill-grid {
   display: grid;
   grid-template-columns: repeat(3,1fr);
@@ -224,7 +265,7 @@ h2 span {
 }
 
 .skill {
-  padding: 27px;
+  padding: 30px;
   border-radius: 15px;
   background: var(--panel);
   border: 1px solid #16445b;
@@ -239,14 +280,16 @@ h2 span {
 
 .skill h3 {
   color: var(--cyan);
-  margin-bottom: 12px;
+  margin-bottom: 15px;
 }
 
 .skill p {
   color: var(--muted);
   font-size: 14px;
-  line-height: 1.7;
+  line-height: 1.8;
 }
+
+/* EXPERIENCE */
 
 .timeline {
   border-left: 2px solid var(--cyan);
@@ -285,6 +328,8 @@ h2 span {
   line-height: 1.8;
 }
 
+/* PROJECTS */
+
 .project-grid {
   display: grid;
   grid-template-columns: repeat(2,1fr);
@@ -296,6 +341,12 @@ h2 span {
   border: 1px solid #16445b;
   border-radius: 17px;
   padding: 30px;
+  transition: .3s;
+}
+
+.project:hover {
+  transform: translateY(-5px);
+  border-color: var(--cyan);
 }
 
 .project h3 {
@@ -308,13 +359,7 @@ h2 span {
   line-height: 1.8;
 }
 
-.project .project-image {
-  width: 100%;
-  height: 170px;
-  object-fit: cover;
-  border-radius: 10px;
-  margin-bottom: 20px;
-}
+/* CONTACT */
 
 .contact-box {
   max-width: 750px;
@@ -322,6 +367,11 @@ h2 span {
   border: 1px solid #16445b;
   padding: 35px;
   border-radius: 20px;
+}
+
+.contact-box h3 {
+  color: var(--cyan);
+  font-size: 25px;
 }
 
 .contact-box p {
@@ -335,17 +385,22 @@ h2 span {
   text-decoration: none;
 }
 
+/* FOOTER */
+
 footer {
   text-align: center;
   padding: 25px;
   border-top: 1px solid #183047;
   color: #8296ae;
   font-size: 13px;
+  margin-top: auto;
 }
 
+/* RESPONSIVE */
+
 @media(max-width:900px) {
+
   header {
-    height: auto;
     padding: 20px 5%;
     flex-direction: column;
     gap: 15px;
@@ -368,34 +423,53 @@ footer {
 
   .hero {
     grid-template-columns: 1fr;
-    padding: 30px 0;
+    padding: 35px 0;
   }
 
   .profile {
     max-width: 320px;
-    height: 330px;
+    height: 350px;
   }
 
-  .cards,.project-grid {
+  .cards,
+  .project-grid {
     grid-template-columns: 1fr;
   }
 
   .skill-grid {
     grid-template-columns: repeat(2,1fr);
   }
+}
+
+@media(max-width:480px) {
+
+  .logo {
+    font-size: 26px;
+  }
+
+  nav {
+    gap: 12px;
+  }
+
+  .skill-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hero h3 {
+    font-size: 20px;
+  }
+
+  .description {
+    font-size: 15px;
+  }
+
+  .btn {
+    padding: 14px 20px;
+  }
 
   .section-title {
     font-size: 34px;
   }
-}
-
-@media(max-width:480px) {
-  .logo { font-size: 26px; }
-  nav { gap: 12px; }
-  .skill-grid { grid-template-columns: 1fr; }
-  .hero h3 { font-size: 20px; }
-  .description { font-size: 15px; }
-  .btn { padding: 14px 20px; }
 }
 </style>
 </head>
@@ -403,38 +477,47 @@ footer {
 <body>
 
 <header>
+
   <div class="logo">RAHMAT.W</div>
 
   <nav>
-    <button class="active" onclick="showPage('home',this)">Home</button>
-    <button onclick="showPage('about',this)">About</button>
-    <button onclick="showPage('skills',this)">Skills</button>
-    <button onclick="showPage('experience',this)">Experience</button>
-    <button onclick="showPage('projects',this)">Projects</button>
-    <button onclick="showPage('contact',this)">Contact</button>
+    <button class="active" data-page="home" onclick="showPage('home',this)">Home</button>
+    <button data-page="about" onclick="showPage('about',this)">About</button>
+    <button data-page="skills" onclick="showPage('skills',this)">Skills</button>
+    <button data-page="experience" onclick="showPage('experience',this)">Experience</button>
+    <button data-page="projects" onclick="showPage('projects',this)">Projects</button>
+    <button data-page="contact" onclick="showPage('contact',this)">Contact</button>
   </nav>
+
 </header>
 
 <main>
 
 <!-- HOME -->
+
 <section id="home" class="page active">
+
   <div class="hero">
 
     <div>
+
       <div class="tag">WELCOME TO MY PORTFOLIO</div>
 
-      <h1>Hi, I'm <span>Rahmat Wahyono</span></h1>
+      <h1>
+        Hi, I'm <span>Rahmat Wahyono</span>
+      </h1>
 
       <h3>IT Infrastructure & System Administration</h3>
 
       <p class="description">
-        Lulusan S1 Sistem Informasi dengan pengalaman di lingkungan
-        Data Center. Memiliki ketertarikan pada Linux, Server
-        Administration, Virtualization, dan Network Infrastructure.
+        Lulusan S1 Sistem Informasi dengan pengalaman
+        di lingkungan Data Center. Memiliki ketertarikan
+        pada Linux, Server Administration, Virtualization,
+        dan Network Infrastructure.
       </p>
 
       <div class="buttons">
+
         <button class="btn" onclick="showPage('about')">
           Explore My Profile →
         </button>
@@ -442,39 +525,57 @@ footer {
         <button class="btn outline" onclick="showPage('contact')">
           Contact Me
         </button>
+
       </div>
+
     </div>
 
-    <div>
-      <img class="profile"
-        src="assets/profile.jpg"
-        alt="Foto Rahmat Wahyono">
+    <div class="profile-wrapper">
+
+      <!-- FOTO PROFIL -->
+      <img
+        class="profile"
+        src="./profile.jpg"
+        alt="Foto Rahmat Wahyono"
+      >
+
     </div>
 
   </div>
+
 </section>
 
 <!-- ABOUT -->
+
 <section id="about" class="page">
 
   <div class="tag">ABOUT ME</div>
-  <h2 class="section-title">Tentang <span>Saya</span></h2>
+
+  <h2 class="section-title">
+    Tentang <span>Saya</span>
+  </h2>
 
   <div class="cards">
 
     <div class="card">
+
       <h3>Profil Singkat</h3>
+
       <p>
-        Saya merupakan lulusan S1 Sistem Informasi dengan kemampuan
-        dalam pengolahan dan analisis data, administrasi, penyusunan
-        dokumen, serta pelayanan. Saya juga memiliki pengalaman bekerja
-        di lingkungan Data Center, khususnya pada bidang System
-        Administration.
+        Saya merupakan lulusan S1 Sistem Informasi
+        dengan kemampuan dalam pengolahan dan analisis
+        data, administrasi, penyusunan dokumen, serta
+        pelayanan. Saya juga memiliki pengalaman bekerja
+        di lingkungan Data Center, khususnya pada bidang
+        System Administration.
       </p>
+
     </div>
 
     <div class="card">
+
       <h3>Informasi</h3>
+
       <ul>
         <li>Nama: Rahmat Wahyono</li>
         <li>Pendidikan: S1 Sistem Informasi</li>
@@ -482,16 +583,22 @@ footer {
         <li>Fokus: System Administration</li>
         <li>Minat: Linux & Networking</li>
       </ul>
+
     </div>
 
   </div>
+
 </section>
 
 <!-- SKILLS -->
+
 <section id="skills" class="page">
 
   <div class="tag">MY EXPERTISE</div>
-  <h2 class="section-title">Technical <span>Skills</span></h2>
+
+  <h2 class="section-title">
+    Technical <span>Skills</span>
+  </h2>
 
   <div class="skill-grid">
 
@@ -526,57 +633,74 @@ footer {
     </div>
 
   </div>
+
 </section>
 
 <!-- EXPERIENCE -->
+
 <section id="experience" class="page">
 
   <div class="tag">MY JOURNEY</div>
-  <h2 class="section-title">Work <span>Experience</span></h2>
+
+  <h2 class="section-title">
+    Work <span>Experience</span>
+  </h2>
 
   <div class="timeline">
 
     <div class="timeline-item">
+
       <h3>Data Center – System Administration</h3>
+
       <p>
         Terlibat dalam kegiatan operasional Data Center,
         pengelolaan infrastruktur server, monitoring,
         virtualisasi, storage, serta troubleshooting
         permasalahan sistem dan jaringan.
       </p>
+
     </div>
 
     <div class="timeline-item">
+
       <h3>IT Infrastructure & Server Operations</h3>
+
       <p>
-        Mempelajari dan menjalankan kegiatan administrasi server,
-        pengelolaan Virtual Machine, pengecekan kondisi storage,
-        serta dokumentasi operasional infrastruktur TI.
+        Mempelajari dan menjalankan kegiatan administrasi
+        server, pengelolaan Virtual Machine, pengecekan
+        kondisi storage, serta dokumentasi operasional
+        infrastruktur teknologi informasi.
       </p>
+
     </div>
 
   </div>
+
 </section>
 
 <!-- PROJECTS -->
+
 <section id="projects" class="page">
 
   <div class="tag">MY WORK</div>
-  <h2 class="section-title">My <span>Projects</span></h2>
+
+  <h2 class="section-title">
+    My <span>Projects</span>
+  </h2>
 
   <div class="project-grid">
 
     <div class="project">
-      <h3>Proxmox Virtualization</h3>
+      <h3>01. Proxmox Virtualization</h3>
       <p>
-        Praktik pengelolaan virtualisasi menggunakan Proxmox VE,
-        pembuatan Virtual Machine, konfigurasi jaringan,
-        dan monitoring storage.
+        Praktik pengelolaan virtualisasi menggunakan
+        Proxmox VE, pembuatan Virtual Machine,
+        konfigurasi jaringan, dan monitoring storage.
       </p>
     </div>
 
     <div class="project">
-      <h3>Linux Server Administration</h3>
+      <h3>02. Linux Server Administration</h3>
       <p>
         Praktik administrasi Ubuntu Server dan Debian,
         konfigurasi SSH, pengelolaan service,
@@ -585,15 +709,15 @@ footer {
     </div>
 
     <div class="project">
-      <h3>Web Server Deployment</h3>
+      <h3>03. Web Server Deployment</h3>
       <p>
         Praktik deployment website menggunakan Nginx
-        dan aaPanel pada lingkungan virtual machine.
+        dan aaPanel pada lingkungan Virtual Machine.
       </p>
     </div>
 
     <div class="project">
-      <h3>Data Center Operations</h3>
+      <h3>04. Data Center Operations</h3>
       <p>
         Dokumentasi pembelajaran operasional Data Center,
         monitoring server, pemeriksaan storage,
@@ -602,13 +726,18 @@ footer {
     </div>
 
   </div>
+
 </section>
 
 <!-- CONTACT -->
+
 <section id="contact" class="page">
 
   <div class="tag">GET IN TOUCH</div>
-  <h2 class="section-title">Contact <span>Me</span></h2>
+
+  <h2 class="section-title">
+    Contact <span>Me</span>
+  </h2>
 
   <div class="contact-box">
 
@@ -620,23 +749,31 @@ footer {
       System Administration, dan teknologi.
     </p>
 
-    <p>Email: <a href="mailto:emailkamu@gmail.com">
-      emailkamu@gmail.com</a></p>
+    <p>
+      Email:
+      <a href="mailto:emailkamu@gmail.com">
+        emailkamu@gmail.com
+      </a>
+    </p>
 
-    <p>LinkedIn:
+    <p>
+      LinkedIn:
       <a href="https://www.linkedin.com/" target="_blank">
         My LinkedIn Profile
       </a>
     </p>
 
     <div class="buttons">
-      <a class="btn" href="mailto:emailkamu@gmail.com"
-         style="text-decoration:none">
+
+      <a class="btn"
+         href="mailto:emailkamu@gmail.com">
         Send Me an Email →
       </a>
+
     </div>
 
   </div>
+
 </section>
 
 </main>
@@ -646,6 +783,7 @@ footer {
 </footer>
 
 <script>
+
 function showPage(pageId, clickedButton) {
 
   // Sembunyikan semua halaman
@@ -653,28 +791,30 @@ function showPage(pageId, clickedButton) {
     page.classList.remove('active');
   });
 
-  // Tampilkan halaman yang dipilih
+  // Tampilkan halaman terpilih
   const selectedPage = document.getElementById(pageId);
 
   if (!selectedPage) return;
 
   selectedPage.classList.add('active');
 
-  // Hilangkan status aktif semua menu
+  // Reset semua menu
   document.querySelectorAll('nav button').forEach(button => {
     button.classList.remove('active');
   });
 
-  // Aktifkan menu yang dipilih
-  const menuButton = clickedButton ||
+  // Aktifkan menu yang diklik
+  const menu = clickedButton ||
     document.querySelector(
-      'nav button[onclick*="' + pageId + '"]'
+      'nav button[data-page="' + pageId + '"]'
     );
 
-  if (menuButton) {
-    menuButton.classList.add('active');
+  if (menu) {
+    menu.classList.add('active');
   }
+
 }
+
 </script>
 
 </body>
